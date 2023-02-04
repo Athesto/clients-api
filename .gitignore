@@ -142,6 +142,9 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+.build
+cdk.context.json
+.sst
 
 # Gatsby files
 .cache/
