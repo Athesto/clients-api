@@ -1,7 +1,7 @@
 import { Api as ApiGateway, RDS, StackContext } from '@serverless-stack/resources';
 
 export function MyStack({ stack }: StackContext) {
-  const db = new RDS(stack, 'db', {
+  const db = new RDS(stack, 'Cluster', {
     engine: 'postgresql11.13',
     defaultDatabaseName: 'clients',
     migrations: 'services/migrations',
