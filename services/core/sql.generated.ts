@@ -11,7 +11,7 @@ export interface Clients {
 
 export interface Requests {
   api_calls: number | null;
-  client_id: number | null;
+  client_id: number;
   id: Generated<number>;
 }
 
