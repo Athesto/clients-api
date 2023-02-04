@@ -1,7 +1,7 @@
 import { Api as ApiGateway, RDS, StackContext } from '@serverless-stack/resources';
 
 export function MyStack({ stack }: StackContext) {
-  const cluster = new RDS(stack, 'Cluster', {
+  const db = new RDS(stack, 'db', {
     engine: 'postgresql11.13',
     defaultDatabaseName: 'clients',
     migrations: 'services/migrations',
@@ -11,7 +11,7 @@ export function MyStack({ stack }: StackContext) {
   const api = new ApiGateway(stack, 'api', {
     defaults: {
       function: {
-        bind: [cluster]
+        bind: [db]
       }
     },
     routes: {
@@ -23,8 +23,8 @@ export function MyStack({ stack }: StackContext) {
 
   stack.addOutputs({
     ApiEndpoint: api.url,
-    SecretArn: cluster.secretArn,
-    ClusterIdentifier: cluster.clusterIdentifier
+    SecretArn: db.secretArn,
+    ClusterIdentifier: db.clusterIdentifier
   });
 
   return api;
