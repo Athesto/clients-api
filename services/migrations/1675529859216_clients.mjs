@@ -10,10 +10,11 @@ export async function up(db) {
         .execute();
     await db.schema.createTable('requests')
         .addColumn("id", 'serial', (col) => col.primaryKey())
-        .addColumn("client_id", 'integer', (col) => col.references('clients').notNull())
+        .addColumn("client_id", 'integer', (col) => col.references('clients.id').notNull())
         .addColumn("api_calls", "integer", (col) => col.notNull())
         .execute();
-    await db.insertInto('clients').values({ name: 'Doug' }, { name: 'David' }).execute()
+    await db.insertInto('clients').values({ name: 'Doug' }).execute()
+    await db.insertInto('clients').values({ name: 'David' }).execute()
 }
 
 /**

@@ -6,9 +6,9 @@ export const handler = async (event: APIGatewayProxyEvent) => {
 
   if (!clientId) return { statusCode: 400, body: JSON.stringify({ error: true }) };
 
-  const request = await addRequestCall(+clientId);
+  const total = await addRequestCall(+clientId);
 
-  if (!request) return { statusCode: 404, body: JSON.stringify({ error: true }) };
+  if (!total) return { statusCode: 404, body: JSON.stringify({ error: true }) };
 
-  return { statusCode: 200, api_calls: request };
+  return total;
 };

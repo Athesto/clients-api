@@ -4,8 +4,5 @@ import { getAllClients } from '../core/client';
 export const handler = async (event: APIGatewayProxyEvent) => {
   const clients = await getAllClients();
 
-  return {
-    statusCode: 200,
-    data: clients
-  };
+  return clients;
 };
