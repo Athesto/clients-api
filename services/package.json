@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {},
   "dependencies": {
+    "@serverless-stack/node": "^1.18.4",
     "aws-sdk": "^2.1309.0"
   },
   "devDependencies": {
