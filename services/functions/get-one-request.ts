@@ -1,7 +1,7 @@
-import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
+import { APIGatewayProxyEvent } from 'aws-lambda';
 import { requestCalls } from '../core/request';
 
-export const handler: APIGatewayProxyHandlerV2 = async (event) => {
+export const handler = async (event: APIGatewayProxyEvent) => {
   const clientId = event.pathParameters?.client_id;
 
   if (!clientId) return { statusCode: 400, body: JSON.stringify({ error: true }) };
@@ -12,6 +12,6 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify(request.api_calls)
+    api_calls: request
   };
 };
